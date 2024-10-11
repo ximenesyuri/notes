@@ -1,0 +1,40 @@
+FOUNDATIONS:
+  papers:
+  talks:
+  books:
+
+ML:
+  papers:
+  talks:
+  books:
+
+LLM:
+
+CAT:
+  papers:
+    ShieblerGavranovicWilson2021:
+      title: Category Theory in Machine Learning
+      authors:
+        - Dan Shiebler
+        - Bruno Gavranovic
+        - Paul Wilson
+      arxiv: https://arxiv.org/abs/2106.07032v1
+
+  talks:
+    Bradley2022:
+      title: Category Theory Inspired by LLM
+      authors: 
+        - Tai-Danai Bradley
+      arxiv: 
+      url: https://cats.for.ai/assets/slides/TDB_slides.pdf
+      related:
+        - 
+
+
+  books:
+
+
+
+
+
+ 
