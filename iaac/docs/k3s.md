@@ -4,15 +4,19 @@
 Criação de cluster k3s na Magalu Cloud
 -----------------------------------------
 ```
-
-> **OBS.** 
-> 1. Abaixo: `MGC = Magalu Cloud`.
-> 2. Pressupõe-se o uso de Linux.
-> 3. Dependências: `ssh` e `xclip`
+```
+__OBS.__
+    1. Abaixo: MGC = Magalu Cloud 
+    2. Pressupõe-se o uso de Linux
+    3. Dependênncias: ssh e xclip
+```
 
 # Etapas Iniciais
 
-> **OBS.** No que segue, `VM`s corresponderão ao `nodes` do cluster
+```
+__OBS.__ 
+    No que segue, VMs corresponderão ao nodes do cluster
+```
 
 1. Na sua máquina local, gere uma chave SSH:
 ```bash
@@ -27,20 +31,24 @@ cat /caminho/para/chave | xclip -selection clipboard
     1. adicione a chave ssh copiada
     2. anote seu IP privado (veja abaixo).
 
-> **OBS.** Recomenda-se ao menos 3 VMs: uma como servidor (control pane), um para os serviços e uma como réplica, com os requisitos mínimos abaixo.
-> 1. `servidor`: Ao menos 2G de RAM
-> 2. `servicos`: Ao menos 4G de RAM
-> 3. `replica`: Mesma dos `servicos`.
+```
+__OBS.__ 
+    Recomenda-se ao menos 3 VMs: uma como servidor (control pane), um para os serviços e uma como réplica, com os requisitos mínimos abaixo.
+    1. servidor: ao menos 2G de RAM
+    2. servicos: ao menos 4G de RAM
+    3. replica: idem.
+
+    nome           VM         RAM          Disco           Preço (R$/mês)
+    --------------------------------------------------------------------
+    servidor      BV1-2-20    2GB          20GB            54,99
+    servicos      BV2-4-40    4GB          40GB            102,99
+    replica       BV2-4-40    4GB          40GB            102,99        
+```
 
 ```
-nome           VM         RAM          Disco           Preço (R$/mês)
---------------------------------------------------------------------
-servidor      BV1-2-20    2GB          20GB            54,99
-servicos      BV2-4-40    4GB          40GB            102,99
-replica       BV2-4-40    4GB          40GB            102,99        
+__OBS.__
+    Cada VM vem dotada de um IP privado (associado à rede da `MGC`). Opcionalmente pode-se adicionar um IP público. Para instalar o cluster `k3s` você vai precisar do acesso SSH de cada máquina, o que requer um IP público. Uma vez instalado e configurado, a depender do seu uso, os IPs públicos podem ser removidos (exceto o do `servidor`).
 ```
-
-> **OBS.** Cada VM vem dotada de um IP privado (associado à rede da `MGC`). Opcionalmente pode-se adicionar um IP público. Para instalar o cluster `k3s` você vai precisar do acesso SSH de cada máquina, o que requer um IP público. Uma vez instalado e configurado, a depender do seu uso, os IPs públicos podem ser removidos (exceto o do `servidor`).
 
 # Preparação
 
@@ -94,8 +102,11 @@ ssh usuario@IP-publico-servidor \
 ssh usuario@IP-publico-servidor 'sudo reboot'
 ```
 
-> **OBS.** Na `MGC` o `usuario` é, por padrão, o nome da distribuição instalada (pode-se conferi-lo diretamente no console, na aba da VM).
-> * Exemplo: se a distribuição é Ubuntu, então `usuario = ubuntu`.
+```
+__OBS.__ 
+    Na MGC "usuario" é, por padrão, o nome da distribuição instalada (pode-se conferi-lo diretamente no console, na aba da VM).
+    - Exemplo: se a distribuição é Ubuntu, então "usuario = ubuntu".
+```
 
 # Instalação: `nodes`
 
